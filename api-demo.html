@@ -14,7 +14,25 @@
     <title>API Demo</title>
   </head>
   <body class="text-secondary">
-    <h1 class="text-center my-4">API Demo Page</h1>
+    <div class="container">
+      <h1 class="text-center my-4">API Demo Page</h1>
+      
+      <button class="btn btn-primary" onclick="addNew()">Add</button>
+
+      <h3 class="mt-4">List of Accounts</h3>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
