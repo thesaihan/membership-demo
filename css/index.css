@@ -30,5 +30,13 @@ input, textarea, select, button, a.btn {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   line-height: 150px;
+  letter-spacing: 2px;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+#login-btn{
+  border-radius: 25px;
+  margin: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
