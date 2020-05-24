@@ -16,10 +16,13 @@
   </head>
   <body>
 
-    <div class="container-fluid LoginPage">
-      <div class="row justify-content-center align-item-center">
+    <div class="container-fluid">
+      <div class="row justify-content-center align-item-center" style="min-height: 100vh;">
         <div class="col-md-4 d-flex flex-column justify-content-center">
-          <form action="">
+          <form action="" id="login-form">
+            <div class="form-header">
+              <h2 class="text-center text-light">SIGNIN</h2>
+            </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Username</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -31,9 +34,9 @@
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <label class="form-check-label" for="exampleCheck1">Remember Me</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success" style="border-radius: 25px; margin: 20px;">Login</button>
           </form>
         </div>
       </div>

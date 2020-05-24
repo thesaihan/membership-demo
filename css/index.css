@@ -3,6 +3,32 @@ input, textarea, select, button, a.btn {
   box-shadow: none !important;
 }
 
-.LoginPage .row {
-  min-height: 100vh;
+#login-form {
+  border-radius: 15px;
+  background-color: #d4dfd9;
+  box-sizing: border-box;
+  position: relative;
+  /* box-shadow: #bbb 2px 2px 6px 2px; */
+}
+
+#login-form .form-group {
+  margin: 10px 20px;
+}
+
+.form-header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  min-height: 150px;
+  max-height: 150px;
+  background-image: url(/img/login-photo.jpg);
+  background-position: center bottom;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+
+.form-header h2 {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  line-height: 150px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
