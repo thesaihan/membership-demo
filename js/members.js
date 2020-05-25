@@ -48,19 +48,21 @@ function getRow(mem) {
 function goAdd(event){
   event.preventDefault();
 
-  const oldMem = data.find(m => m.username === memUsername.value);
-  if(oldMem) {
-    oldMem.name = memName.value;
-    oldMem.team = memTeam.value;
-  } else {
-    const mem = {
-      username: memUsername.value,
-      name: memName.value,
-      team: memTeam.value,
+  if(memName.value && memUsername && memTeam.value && !memUsername.value.includes(" ")){
+    const oldMem = data.find(m => m.username === memUsername.value);
+    if(oldMem) {
+      oldMem.name = memName.value;
+      oldMem.team = memTeam.value;
+    } else {
+      const mem = {
+        username: memUsername.value,
+        name: memName.value,
+        team: memTeam.value,
+      }
+      data.push(mem);
     }
-    data.push(mem);
-  }
-  displayData();
+    displayData();
+  } else alert("Invalid inputs");
 }
 
 function goRemove(username){
