@@ -6,3 +6,11 @@ input, textarea, select, button, a.btn {
 button.table-btn {
   border-radius: 50%;
 }
+
+label[for="addBtn"] {
+  width: 100%;
+}
+
+#addBtn {
+  width: initial;
+}
