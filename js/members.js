@@ -14,10 +14,10 @@ var tbody = document.getElementById("tbody");
 var memUsername = document.getElementById("memUsername");
 var memName = document.getElementById("memName");
 var memTeam = document.getElementById("memTeam");
+var addBtn = document.getElementById("addBtn");
 
 function displayData() {
   tbody.innerHTML = "";
-  console.log("Display");
   data.forEach(mem => {
     tbody.appendChild(getRow(mem));
   });
@@ -40,8 +40,8 @@ function getRow(mem) {
 
   let col4 = document.createElement("td");
   col4.innerHTML = `
-  <button class="btn btn-sm mx-3 btn-danger float-right"><i class="fa fa-trash"></i></button>
-  <button class="btn btn-sm mx-3 btn-outline-primary float-right"><i class="fa fa-pencil"></i></button>
+  <button class="btn btn-sm mx-3 btn-danger float-right" onclick="goDelete(event)"><i class="fa fa-trash"></i></button>
+  <button class="btn btn-sm mx-3 btn-outline-primary float-right" onclick="goEdit(event)"><i class="fa fa-pencil"></i></button>
   `;
   row.appendChild(col4);
 
@@ -64,13 +64,34 @@ function goAdd(event){
       }
       data.push(mem);
     }
+    memUsername.value = "";
+    memName.value = "";
     displayData();
   } else alert("Invalid inputs");
+  addBtn.value = "+ Add";
 }
 
-function goRemove(username){
-  data = data.filter(m = m.username !== username);
-  displayData();
+function goEdit(event){
+  let selectedRow = event.target.parentNode.parentNode;
+  if(event.target.nodeName === "I")
+    selectedRow = selectedRow.parentNode;
+  const ind = selectedRow.rowIndex - 1;
+  const oldMem = data[ind];
+  memUsername.value = oldMem.username;
+  memName.value = oldMem.name;
+  memTeam.value = oldMem.team;
+  addBtn.value = "Edit";
+}
+
+function goDelete(event){
+  if(confirm("Are you sure you want to delete?")){
+    let selectedRow = event.target.parentNode.parentNode;
+    if(event.target.nodeName === "I")
+      selectedRow = selectedRow.parentNode;
+    const ind = selectedRow.rowIndex - 1;
+    data.splice(ind, 1);
+    displayData();
+  }
 }
 
 displayData();
