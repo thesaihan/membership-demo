@@ -40,8 +40,8 @@ function getRow(mem) {
 
   let col4 = document.createElement("td");
   col4.innerHTML = `
-  <button class="btn btn-sm mx-3 btn-danger float-right" onclick="goDelete(event)"><i class="fa fa-trash"></i></button>
-  <button class="btn btn-sm mx-3 btn-outline-primary float-right" onclick="goEdit(event)"><i class="fa fa-pencil"></i></button>
+  <button class="btn btn-sm mx-3 btn-outline-danger float-right table-btn" onclick="goDelete(event)"><i class="fa fa-trash"></i></button>
+  <button class="btn btn-sm mx-3 btn-outline-primary float-right table-btn" onclick="goEdit(event)"><i class="fa fa-pencil"></i></button>
   `;
   row.appendChild(col4);
 
