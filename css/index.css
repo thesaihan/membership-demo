@@ -20,7 +20,7 @@ input, textarea, select, button, a.btn {
   border-top-right-radius: 15px;
   min-height: 150px;
   max-height: 150px;
-  background-image: url(/img/login-photo.jpg);
+  background-image: url(../img/login-photo.jpg);
   background-position: center bottom;
   background-size: cover;
   margin-bottom: 20px;
