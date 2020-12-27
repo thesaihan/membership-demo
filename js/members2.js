@@ -33,10 +33,27 @@ const goAddOrUpdate = (event) => {
         team: teamText,
       });
       displayData();
+      usrInput.value = "";
+      nameInput.value = "";
+      teamSelect.value = "";
     }
   } else {
     alert("Missing data");
   }
+};
+
+const goEdit = (event) => {
+  let btnClicked = null;
+  if (event.target.nodeName === "I" || event.target.nodeName === "i") {
+    btnClicked = event.target.parentElement;
+  } else {
+    btnClicked = event.target;
+  }
+  const selectedUsrname = btnClicked.getAttribute("mem-username");
+  const selectedMember = data.find((mem) => mem.username === selectedUsrname);
+  usrInput.value = selectedMember.username;
+  nameInput.value = selectedMember.fullname;
+  teamSelect.value = selectedMember.team;
 };
 
 const getRowHTML = (mem) => {
