@@ -78,6 +78,25 @@ const goEdit = (event) => {
   usrInput.setAttribute("readonly", "true");
 };
 
+const goDelete = (event) => {
+  let btnClicked = null;
+  if (event.target.nodeName === "I" || event.target.nodeName === "i") {
+    btnClicked = event.target.parentElement;
+  } else {
+    btnClicked = event.target;
+  }
+  const selectedUsrname = btnClicked.getAttribute("mem-username");
+  if (
+    confirm(
+      "Are you sure you want to delete the member: " + selectedUsrname + "?"
+    )
+  ) {
+    // delete is confirmed
+    data = data.filter((mem) => mem.username !== selectedUsrname);
+    displayData();
+  }
+};
+
 const getRowHTML = (mem) => {
   return `
     <tr>
