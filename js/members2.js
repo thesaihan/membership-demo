@@ -16,6 +16,7 @@ var tbody = document.getElementById("tbody");
 var usrInput = document.getElementById("memUsername");
 var nameInput = document.getElementById("memName");
 var teamSelect = document.getElementById("memTeam");
+var addOrUpdateBtn = document.getElementById("addBtn");
 
 const goAddOrUpdate = (event) => {
   event.preventDefault();
@@ -23,19 +24,38 @@ const goAddOrUpdate = (event) => {
   const nameText = nameInput.value.trim();
   const teamText = teamSelect.value.trim();
   if (usrText && nameText && teamText) {
-    const oldMem = data.find((mem) => mem.username === usrText);
-    if (oldMem) {
-      alert("Member with username: " + usrText + " already exist!");
+    if (addOrUpdateBtn.value == "+ Update") {
+      // UPDATE code here
+      const oldMemInd = data.findIndex((mem) => mem.username === usrText);
+      if (oldMemInd !== -1) {
+        data.splice(oldMemInd, 1, {
+          username: usrText,
+          fullname: nameText,
+          team: teamText,
+        });
+        displayData();
+        usrInput.value = "";
+        nameInput.value = "";
+        teamSelect.value = "";
+        addOrUpdateBtn.value = "+ Add";
+        usrInput.removeAttribute("readonly");
+      }
     } else {
-      data.push({
-        username: usrText,
-        fullname: nameText,
-        team: teamText,
-      });
-      displayData();
-      usrInput.value = "";
-      nameInput.value = "";
-      teamSelect.value = "";
+      // ADD code here
+      const oldMem = data.find((mem) => mem.username === usrText);
+      if (oldMem) {
+        alert("Member with username: " + usrText + " already exist!");
+      } else {
+        data.push({
+          username: usrText,
+          fullname: nameText,
+          team: teamText,
+        });
+        displayData();
+        usrInput.value = "";
+        nameInput.value = "";
+        teamSelect.value = "";
+      }
     }
   } else {
     alert("Missing data");
@@ -54,6 +74,8 @@ const goEdit = (event) => {
   usrInput.value = selectedMember.username;
   nameInput.value = selectedMember.fullname;
   teamSelect.value = selectedMember.team;
+  addOrUpdateBtn.value = "+ Update";
+  usrInput.setAttribute("readonly", "true");
 };
 
 const getRowHTML = (mem) => {
