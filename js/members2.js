@@ -62,14 +62,18 @@ const goAddOrUpdate = (event) => {
   }
 };
 
-const goEdit = (event) => {
+const extractSelectedUsername = (event) => {
   let btnClicked = null;
   if (event.target.nodeName === "I" || event.target.nodeName === "i") {
     btnClicked = event.target.parentElement;
   } else {
     btnClicked = event.target;
   }
-  const selectedUsrname = btnClicked.getAttribute("mem-username");
+  return btnClicked.getAttribute("mem-username");
+};
+
+const goEdit = (event) => {
+  const selectedUsrname = extractSelectedUsername(event);
   const selectedMember = data.find((mem) => mem.username === selectedUsrname);
   usrInput.value = selectedMember.username;
   nameInput.value = selectedMember.fullname;
@@ -79,13 +83,7 @@ const goEdit = (event) => {
 };
 
 const goDelete = (event) => {
-  let btnClicked = null;
-  if (event.target.nodeName === "I" || event.target.nodeName === "i") {
-    btnClicked = event.target.parentElement;
-  } else {
-    btnClicked = event.target;
-  }
-  const selectedUsrname = btnClicked.getAttribute("mem-username");
+  const selectedUsrname = extractSelectedUsername(event);
   if (
     confirm(
       "Are you sure you want to delete the member: " + selectedUsrname + "?"
